@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var a = 10
+        var obj = {
+            a: 20,
+            fn() {
+                setTimeout(() => {
+                    console.log(this.a)
+                })
+            },
+        }
+        obj.fn()
+
+        var asd = obj.fn
+        asd()
+
+        // var tmp = 123
+        // if (true) {
+        //     console.log(tmp)
+        //     let tmp
+        // }
+
+        // var a = []
+        // for (let i = 0; i < 10; i++) {
+        //     a[i] = function () {
+        //         console.log(i)
+        //     }
+        // }
+        // a[6]() // 6
+
+   // var a = [];
+        // for (var i = 0; i < 10; i++) {
+        //     (function (i) {
+        //         a[i] = function () {
+        //             console.log(i);
+        //         };
+        //     })(i)
+        // }
+        // a[6]()
+//依次打印出来 0 1 2 3 4 5 6 7 8 9
+
+
+        // let arr = [1, 2, [3, 4]]
+
+        // function deepClone(o) {
+        //     // 要判断o是对象还是数组
+        //     if (Array.isArray(o)) {
+        //         // 数组
+        //         var result = [];
+        //         for (var i = 0; i < o.length; i++) {
+        //             result.push(deepClone(o[i]));
+        //         }
+        //     } else if (typeof o == 'object') {
+        //         // 对象
+        //         var result = {};
+        //         for (var k in o) {
+        //             result[k] = deepClone(o[k]);
+        //         }
+        //     } else {
+        //         // 基本类型值
+        //         var result = o;
+        //     }
+        //     return result;
+        // }
+
+        // let copyArr = deepClone(arr)
+        // console.log('arr', JSON.stringify(arr));
+        // console.log('copyArr：', JSON.stringify(copyArr));
+        // console.log('深克隆：', arr === copyArr);
+        // console.log('深克隆的arr[2]：', arr[2] === copyArr[2])
+
+
+        // let arr1 = [1, 2, [3, 4]]
+        // // = 赋值操作是不能实现浅克隆的，只是指向内存中相同的地址
+        // let arr2 = arr1
+        // console.log('= 赋值：', arr1 === arr2);
+
+        // let copyArr = []
+        // for (let i = 0; i < arr1.length; i++) {
+        //     copyArr.push(arr1[i])
+        // }
+
+        // console.log('arr1：', JSON.stringify(arr1));
+        // console.log('copyArr：', JSON.stringify(copyArr));
+        // console.log('浅克隆：', arr1 === copyArr)
+        // console.log('浅克隆：', arr1[2] === copyArr[2])
+        // arr1.push(5)
+        // console.log('arr1：', JSON.stringify(arr1));
+        // console.log('copyArr：', JSON.stringify(copyArr));
+
+        // arr1[2].push(6)
+        // console.log('arr1：', JSON.stringify(arr1));
+        // console.log('copyArr：', JSON.stringify(copyArr));
+
+
+        // function copy(obj) {
+        //     var objCopy = {};
+        //     for (var key in obj) {
+        //         objCopy[key] = obj[key];
+        //     }
+        //     return objCopy;
+        // }
+
+        // var person = { name: "Jason", age: 18, car: { brand: "Ferrari", type: "430" } };
+
+        // var personCopy = copy(person);
+        // personCopy.car.brand = 'wuling'
+        // console.log(person);
+        // console.log(personCopy);
+
+        // let obj1 = {
+        //     'name': 'zxc',
+        //     'address': {
+        //         'one': 'asd',
+        //         'two': 'qwe'
+        //     },
+        //     'sex': true,
+        // }
+
+        // function copy(obj) {
+        //     let objCopy = {}
+        //     for (const key in obj) {
+        //         objCopy[key] = obj[key]
+        //     }
+        //     return objCopy
+        // }
+        // let obj2 = copy(obj1)
+        // console.log(obj1);
+        // console.log(obj2);
+
+        // obj2['address']['one'] = 'bnm'
+
+        // console.log(obj1);
+        // console.log(obj2);
+
+        // let id = Symbol('id')
+        // let obj = {
+        //     [id]: 'symbol',
+        // }
+        // for (let option in obj) {
+        //     console.log(obj[option]) // 没东西打印
+        // }
+        // console.log(obj[id]); // symbol
+        // console.log(Object.getOwnPropertySymbols(obj)); // [Symbol(id)]
+
+        // // 使用新增的反射API
+        // console.log(Reflect.ownKeys(obj)); // [Symbol(id)]
+
+        // let s1 = Symbol()
+        // let s2 = Symbol()
+        // const obj = {
+        //     age: 16,
+        //     age: 19,
+        //     [s1]: 'Hello!',
+        //     [s2]: 'world',
+        // }
+        // console.log(obj)// {age: 19, Symbol(): "Hello!", Symbol(): "world"}
+
+        // let id = Symbol("id");
+        // let obj = {
+        //     [id]: 'symbol'
+        // };
+        // let array = Object.getOwnPropertySymbols(obj);
+        // console.log(array); //[Symbol(id)]
+        // console.log(obj[array[0]]);  //'symbol'
+
+    </script>
+</body>
+
+</html>
