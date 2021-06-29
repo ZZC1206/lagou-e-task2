@@ -13,3 +13,13 @@
   }, 10)
 */
 
+// text：文本，ms：延时时间/毫秒
+const clgStr = (text, ms) => {
+    return new Promise((resolve, reject) =>
+        setTimeout(() => resolve(text), ms)
+    )
+}
+clgStr('hello', 10)
+    .then(value => clgStr(value + 'lagou', 10))
+    .then(value => clgStr(value + 'I ♥ U', 10))
+    .then(value => console.log(value))

@@ -12,10 +12,11 @@ const { Maybe, Container } = require('./support')
 let maybe = Maybe.of([5, 6, 1])
 
 // 2.实现 ex1 函数
+// const ex1 = value => fp.map(x => x + 1, value)
+const ex1 = value => fp.map(fp.add(1), value)
 
 // 3.调用测试
-console.log( maybe.map(ex1) )  // Maybe { _value: [ 6, 7, 2 ] }
-
+console.log('练习1: ', maybe.map(ex1))  // Maybe { _value: [ 6, 7, 2 ] }
 
 /*
   练习2:
@@ -26,9 +27,9 @@ console.log( maybe.map(ex1) )  // Maybe { _value: [ 6, 7, 2 ] }
 let xs = Container.of(['do', 'ray', 'me', 'fa', 'so', 'la', 'ti', 'do'])
 
 // 2.实现 ex2
-
+const ex2 = value => fp.first(value)
 // 3.测试打印
-// console.log( xs.map(ex2) )  // Container { _value: 'do' }
+console.log('练习2：', xs.map(ex2))  // Container { _value: 'do' }
 
 
 /*
@@ -37,14 +38,18 @@ let xs = Container.of(['do', 'ray', 'me', 'fa', 'so', 'la', 'ti', 'do'])
   使用 safeProp 和 fp.first 找到 user 的名字的首字母
 */
 let safeProp = fp.curry(function (x, o) {
-	return Maybe.of(o[x])
+    return Maybe.of(o[x])
 })
-let user = { id: 2, name: 'Albert'}
+let user = { id: 2, name: 'Albert' }
 
 // 1.实现 ex3
+// console.log(safeProp('name', user));
+// console.log(safeProp('name', user).map(fp.first));
+// const ex3 = fp.flowRight(fp.first, safeProp('name', user)) //
+const ex3 = () => safeProp('name', user).map(fp.first)
 
 // 2.测试打印
-console.log( ex3() ) // Maybe { _value: 'A' }
+console.log('练习3：', ex3()) // Maybe { _value: 'A' }
 
 
 /*
@@ -61,14 +66,16 @@ console.log( ex3() ) // Maybe { _value: 'A' }
 */
 
 // 1.实现 ex4 函数
-
+// console.log(Maybe.of('7R'));
+// console.log(Maybe.of('7R').map(parseInt));
+const ex4 = value => Maybe.of(value).map(parseInt)
 // 2.测试打印
-console.log( ex4('7R') )   // Maybe { _value: 7 }
-console.log( ex4('7.6B'))  // Maybe { _value: 7 }
-console.log( ex4('8.2G') ) // Maybe { _value: 8 }
+console.log('练习4：', ex4('7R')) // Maybe { _value: 7 }
+console.log('练习4：', ex4('7.6B')) // Maybe { _value: 7 }
+console.log('练习4：', ex4('8.2G')) // Maybe { _value: 8 }
 
-console.log( ex4(null) )      // Maybe { _value: null }
-console.log( ex4(undefined) ) // Maybe { _value: undefined }
+console.log('练习4：', ex4(null)) // Maybe { _value: null }
+console.log('练习4：', ex4(undefined)) // Maybe { _value: undefined }
 
-console.log( ex4('i7.5') )    // Maybe { _value: NaN }
-console.log( ex4('abc') )     // Maybe { _value: NaN }
+console.log('练习4：', ex4('i7.5')) // Maybe { _value: NaN }
+console.log('练习4：', ex4('abc')) // Maybe { _value: NaN }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // let promise = new Promise((resolve, reject) => {
+    //     // setTimeout(() => resolve('成功'), 2000)
+    //     reject('失败')
+    // });
+    // promise.catch(reason => console.log(reason))
+    // promise.then(value => console.log(value), reason => console.log(reason))
+
+
+    // let promise = new Promise((resolve, reject) => {
+    //     resolve('成功')
+    // });
+
+    // // promise
+    // //     .then()
+    // //     .then()
+    // //     .then(value => console.log(value))
+    // promise
+    //     .then(value => value)
+    //     .then(value => value)
+    //     .then(value => console.log(value))
+
+    // function p1() {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => resolve('p1'), 2000)
+    //     })
+    // }
+    // function p1() {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => resolve('p1'), 2000)
+    //     })
+    // }
+    // Promise.reject(p1()).catch(reason => console.log(reason))
+    // Promise.resolve(12).then(result => console.log(result))
+    // Promise.resolve(p1()).then(result => console.log(result))
+
+    // function p2() {
+    //     return new Promise((resolve, reject) => {
+    //         reject('p2')
+    //     })
+    // }
+    // p2().catch(reason => console.log(reason))
+    // Promise.all(['a', 'b', p1(), p2(), 'c']).then(result => console.log(result))
+
+    function p1() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => resolve('p1'), 2000)
+        })
+    }
+
+    function p2() {
+        return new Promise((resolve, reject) => {
+            // resolve('p2')
+            reject('p2')
+        })
+    }
+
+    // Promise.race(['a', 'b', p1(), p2(), 'c']).then(result => console.log(result))
+    // console.log('object');
+    Promise.race([p1(), p2()]).then(result => console.log(result)).catch(reason => console.log(reason))
+    console.log('object');
+</script>
+
+</html>
