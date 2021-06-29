@@ -137,8 +137,6 @@ Clean the `dist` & `temp` files.
 
 [MIT](LICENSE) &copy; [汪磊](https://zce.me)
 
-
-
 [travis-image]: https://img.shields.io/travis/zce/pages-boilerplate/master.svg
 [travis-url]: https://travis-ci.org/zce/pages-boilerplate
 [version-image]: https://img.shields.io/github/package-json/v/zce/pages-boilerplate/master.svg
