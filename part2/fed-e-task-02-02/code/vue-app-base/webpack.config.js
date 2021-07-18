@@ -1,7 +1,9 @@
 // webpack.config.js
 const path = require('path')
-const { VueLoaderPlugin } = require('vue-loader')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { DefinePlugin } = require("webpack");
 
 module.exports = {
     // 打包模式
@@ -30,15 +32,6 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader'
             },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/, // 排除
-                loader: 'eslint-loader',
-                enforce: 'pre', // 强行执行
-                options: {
-                    // eslint options (if necessary)
-                },
-            },
             // 它会应用到普通的 `.css` 文件
             // 以及 `.vue` 文件中的 `<style>` 块 4.3.0
             {
@@ -64,10 +57,15 @@ module.exports = {
     plugins: [
         // 请确保引入这个插件来施展魔法
         new VueLoaderPlugin(),
+        new DefinePlugin({
+            //定义BASE_URL index.html中需要使用
+            BASE_URL: '/public/',
+        }),
         new HtmlWebpackPlugin({
             title: 'App',
             // favicon: "./public/favicon.ico", // 在此处设置
             template: './public/index.html',
         }),
+        new CopyWebpackPlugin(['public'])
     ]
 }
